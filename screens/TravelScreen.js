@@ -41,7 +41,7 @@ const TravelsScreen = ({ navigation }) => {
           <TravelItem
           title={item.title.rendered}
           rating={item.id}
-          metadata={item.yoast_head_json.og_description}
+          metadata={item.yoast_head_json.og_description.split(' ')}
           
           />
         )}
