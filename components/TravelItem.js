@@ -14,7 +14,9 @@ const TravelItem = itemprops => {
         <Text>lunch: {itemprops.metadata[2]}</Text>
         <Text>guided: {itemprops.metadata[3]}</Text>
         <Text>courses: {itemprops.metadata[4]}</Text>
-        <Text>type of skiing: {itemprops.metadata[5]}</Text>
+        <Text>scenery: {itemprops.metadata[5]}</Text>
+        <Text>type of skiing: {itemprops.metadata[6]}</Text>
+        <Text>price: {itemprops.metadata[7]}</Text>
       </View>
     </TouchableOpacity >
 
