@@ -1,24 +1,33 @@
-import React, { useState } from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import React, { useState, useEffect } from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image, Pressable } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 const TravelItem = itemprops => {
-
-  const [metaitem, setMetaItem] = useState([]);
+  const navigation = useNavigation();
 
   return (
-    <TouchableOpacity activeOpacity={0.5} onPress={() => itemprops.onSelectTravel(props.id)}>
       <View style={styles.listItem}>
-        <Text>{itemprops.rating} ~ {itemprops.title}</Text>
-        <Text>days: {itemprops.metadata[0]}</Text>
-        <Text>persons: {itemprops.metadata[1]}</Text>
-        <Text>lunch: {itemprops.metadata[2]}</Text>
-        <Text>guided: {itemprops.metadata[3]}</Text>
-        <Text>courses: {itemprops.metadata[4]}</Text>
-        <Text>scenery: {itemprops.metadata[5]}</Text>
-        <Text>type of skiing: {itemprops.metadata[6]}</Text>
-        <Text>price: {itemprops.metadata[7]}</Text>
+        <TouchableOpacity>
+
+          <Image style={styles.imagestyle} source={{uri: itemprops.metaimage}}/>
+          
+          <Text>days: {itemprops.metadata[0]}</Text>
+          <Text>persons: {itemprops.metadata[1]}</Text>
+          <Text>lunch: {itemprops.metadata[2]}</Text>
+          <Text>guided: {itemprops.metadata[3]}</Text>
+          <Text>courses: {itemprops.metadata[4]}</Text>
+          <Text>scenery: {itemprops.metadata[5]}</Text>
+          <Text>type of skiing: {itemprops.metadata[6]}</Text>
+          <Text>price: {itemprops.metadata[7]}</Text>
+
+          <Pressable onPress={() => navigation.navigate("DetailsScreen", {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage})}>
+            <Text style={styles.text}>Bekijk product: {itemprops.title}</Text>
+          </Pressable>
+
+
+        </TouchableOpacity>
+
       </View>
-    </TouchableOpacity >
 
   );
 }
@@ -30,6 +39,9 @@ const styles = StyleSheet.create({
     borderColor: 'grey',
     borderStyle: 'dashed',
     borderWidth: 0.5,
+  },
+  imagestyle: {
+    height: 200,
   }
 });
 export default TravelItem;

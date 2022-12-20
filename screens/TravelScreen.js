@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput, Image } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+
 
 import apiKey from '../apiKey';
 import TravelItem from '../components/TravelItem';
@@ -7,13 +9,9 @@ import TravelItem from '../components/TravelItem';
 const TravelsScreen = ({ navigation }) => {
 
   const [content, setContent] = useState([]);
-
   const getItems = async () => {
-
     try {
-      const response = await fetch("https://arnesamson.be/wp-json/wp/v2/posts?categories=14", {
-        
-        }
+      const response = await fetch("https://arnesamson.be/wp-json/wp/v2/posts?categories=14", {}
       )
       const json = await response.json();
       setContent(json)
@@ -33,18 +31,29 @@ const TravelsScreen = ({ navigation }) => {
 
     <View style={styles.screen}>
 
-      <FlatList
-      
-        data={content}
+      <TextInput
+        placeholder="search a trip"
+        style={styles.input}
+        //geeft argument enteredText mee, denk aan de taskInputHandler uit de todo app.
+      />
 
-        renderItem={({ item }) => (
-          <TravelItem
-          title={item.title.rendered}
-          rating={item.id}
-          metadata={item.yoast_head_json.og_description.split(' ')}
+      <FlatList
+
+        data={content}
+        keyExtractor={item => item.id}
+        renderItem={
+          ({ item }) => (
           
+          <TravelItem
+            title={item.title.rendered}
+            metadata={item.yoast_head_json.og_description.split(' ')}
+            metaimage={item.yoast_head_json.og_image[0].url}
+            itemid={item.id}
           />
-        )}
+
+          )
+        }
+
       />
 
     </View >
