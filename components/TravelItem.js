@@ -7,25 +7,25 @@ const TravelItem = itemprops => {
 
   return (
       <View style={styles.listItem}>
-        <TouchableOpacity>
+        <View>
 
           <Image style={styles.imagestyle} source={{uri: itemprops.metaimage}}/>
           
-          <Text>days: {itemprops.metadata[0]}</Text>
-          <Text>persons: {itemprops.metadata[1]}</Text>
-          <Text>lunch: {itemprops.metadata[2]}</Text>
-          <Text>guided: {itemprops.metadata[3]}</Text>
-          <Text>courses: {itemprops.metadata[4]}</Text>
-          <Text>scenery: {itemprops.metadata[5]}</Text>
-          <Text>type of skiing: {itemprops.metadata[6]}</Text>
-          <Text>price: {itemprops.metadata[7]}</Text>
+          <View>
+            <Text style={styles.itemtitle}>{itemprops.title}</Text>
+            
+            <Text style={styles.itemdesc} >days: {itemprops.metadata[0]}</Text>
+            <Text style={styles.itemdesc} >persons: {itemprops.metadata[1]}</Text>
+            <Text style={styles.itemdesc} >type of sport: {itemprops.metadata[6]}</Text>
+            <Text style={styles.itemprice} >price: {itemprops.metadata[7]}</Text>
+          </View>
 
-          <Pressable onPress={() => navigation.navigate("DetailsScreen", {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage})}>
-            <Text style={styles.text}>Bekijk product: {itemprops.title}</Text>
+          <Pressable style={styles.productbutton} onPress={() => navigation.navigate("DetailsScreen", {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage})}>
+            <Text style={styles.buttontext}>View product: {itemprops.title}</Text>
           </Pressable>
 
 
-        </TouchableOpacity>
+        </View>
 
       </View>
 
@@ -36,12 +36,35 @@ const styles = StyleSheet.create({
   listItem: {
     padding: 10,
     marginVertical: 5,
-    borderColor: 'grey',
-    borderStyle: 'dashed',
+    borderColor: '#C94838',
+    borderStyle: 'solid',
     borderWidth: 0.5,
   },
   imagestyle: {
     height: 200,
+  },
+  productbutton: {
+    color: "#C94838",
+    backgroundColor: "#222222",
+    height: 40,
+    padding: 10,
+    marginTop: 20,
+  },
+  buttontext: {
+    color: "#C94838", 
+  },
+  itemprice: {
+    paddingTop: 20,
+    color: "#B7B7B7",
+  },
+  itemdesc: {
+    color: "#B7B7B7",
+  },
+  itemtitle: {
+    color: "#B7B7B7",
+    fontWeight: 'bold',
+    fontSize: 30,
   }
+
 });
 export default TravelItem;

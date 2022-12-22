@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput, Image } from 'react-native';
+import { StyleSheet, Text, View, FlatList, TextInput, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 
@@ -7,7 +7,7 @@ import apiKey from '../apiKey';
 import TravelItem from '../components/TravelItem';
 
 const TravelsScreen = ({ navigation }) => {
-
+  
   const [content, setContent] = useState([]);
   const getItems = async () => {
     try {
@@ -15,7 +15,6 @@ const TravelsScreen = ({ navigation }) => {
       )
       const json = await response.json();
       setContent(json)
-      // console.log(content);
     } catch (error) {
       console.error(error);
     }
@@ -31,9 +30,14 @@ const TravelsScreen = ({ navigation }) => {
 
     <View style={styles.screen}>
 
+      <Pressable onPress={() => navigation.navigate('Cart')}>
+        <Image style={styles.imagestyle} source={require('../assets/cart.png')}/>
+      </Pressable>
+
       <TextInput
+        style={styles.searchfield}
         placeholder="search a trip"
-        style={styles.input}
+        placeholderTextColor="#B7B7B7" 
         //geeft argument enteredText mee, denk aan de taskInputHandler uit de todo app.
       />
 
@@ -62,7 +66,16 @@ const TravelsScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 50,
-  }
+    padding: 30,
+    backgroundColor: "#000000"
+  },
+  searchfield: {
+    marginVertical: 10,
+  },
+  imagestyle: {
+    marginLeft: '94%',
+    height: 18,
+    width: 20,
+  },
 });
 export default TravelsScreen;
