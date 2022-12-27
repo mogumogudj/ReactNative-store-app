@@ -23,7 +23,7 @@ const DetailsScreen = ({ navigation, route }) => {
       </View>
 
       <View style={styles.cartbutton}>
-        <Pressable>
+        <Pressable onPress={() => navigation.navigate('CartScreen', {cartitemid: route.params.itemID})}>
           <Text style={styles.cartbuttontext}>add to shoppingcart</Text>
         </Pressable>
       </View>

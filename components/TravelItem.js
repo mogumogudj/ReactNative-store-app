@@ -7,7 +7,6 @@ const TravelItem = itemprops => {
 
   return (
       <View style={styles.listItem}>
-        <View>
 
           <Image style={styles.imagestyle} source={{uri: itemprops.metaimage}}/>
           
@@ -25,7 +24,6 @@ const TravelItem = itemprops => {
           </Pressable>
 
 
-        </View>
 
       </View>
 
