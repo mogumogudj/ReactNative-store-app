@@ -3,16 +3,18 @@ import { View, Text, StyleSheet, TouchableOpacity, Image, Pressable } from 'reac
 import { useNavigation } from '@react-navigation/native';
 
 const ShoppingCart = cartprops => {
-    const navigation = useNavigation();
+  const navigation = useNavigation();
 
-    return(
-        <View style={styles.listItem}>
-            <Text style={styles.content}>{cartprops.ShoppingCartItemID} haah</Text>
-        </View>
-    )
+  return(
+    <View style={styles.listItem}>
+      
+      <Text style={styles.content}> haah </Text>
+      <Text style={styles.content}> {cartprops.ShoppingCartTitle} blabalbalabla </Text>
 
+    </View>
+  );
 
-
+  console.log(cartprops.ShoppingCartItemID);
 
 }
 
@@ -26,7 +28,7 @@ const styles = StyleSheet.create({
     content: {
       alignContent: 'stretch',
       padding: 10,
-      color: "#ffffff"
+      color: "#ffffff",
     },
     listItem: {
         padding: 10,

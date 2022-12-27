@@ -6,26 +6,34 @@ import ShoppingCart from '../components/ShoppingCart';
 
 
 const CartScreen = ({ navigation, route }) => {
+  console.log(route.params);
+  return(
+  <View style={styles.screen}>
 
-    return(
-    <View style={styles.screen}>
+    {/* <FlatList
 
-      <FlatList>
-        <ShoppingCart
-        ShoppingCartItemID={route.params.cartitemid}
-        />
-      </FlatList>
+      data={route.params}
+      keyExtractor={item => item.cartItemID}
+      renderItem={
+        ({ item } ) => (
 
-      <Text style={styles.testlist}>{route.params.cartitemid}</Text>
+          <ShoppingCart
+          ShoppingCartTitle={item.params.cartItemTitle}
+          />
 
+          )
+      }
 
+    /> */}
 
+    <ShoppingCart/>
 
+    <Text style={styles.testlist}>{route.params.cartItemID}</Text>
 
-    </View>
+  </View>
 
-    )
-    
+  );
+
 }
 
 const styles = StyleSheet.create({
