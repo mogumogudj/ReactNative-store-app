@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
-
 import apiKey from '../apiKey';
 import TravelItem from '../components/TravelItem';
 
@@ -24,7 +23,7 @@ const TravelsScreen = ({ navigation }) => {
 
   useEffect(() => {
     getItems();//loads the store items
-  }, []);
+  }, [content]);
 
   return (
 
@@ -44,10 +43,9 @@ const TravelsScreen = ({ navigation }) => {
       <FlatList
 
         data={content}
-        keyExtractor={item => item.id}
         renderItem={
           ({ item }) => (
-          
+        
           <TravelItem
             title={item.title.rendered}
             metadata={item.yoast_head_json.og_description.split(' ')}

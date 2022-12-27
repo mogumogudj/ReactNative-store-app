@@ -15,11 +15,12 @@ const CartScreen = ({ navigation }) => {
 
 const styles = StyleSheet.create({
     screen: {
-      padding: 30,
+      margin: 30,
       backgroundColor: "#000000",
     },
     imagestyle: {
       height: 18,
     },
   });
+  
 export default CartScreen;

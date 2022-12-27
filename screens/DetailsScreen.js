@@ -22,7 +22,11 @@ const DetailsScreen = ({ navigation, route }) => {
         <Text></Text>
       </View>
 
-    
+      <View style={styles.cartbutton}>
+        <Pressable>
+          <Text style={styles.cartbuttontext}>add to shoppingcart</Text>
+        </Pressable>
+      </View>
 
       <View style={styles.alignbutton}>
         <Pressable style={styles.backbutton} onPress={() => navigation.navigate('TravelsScreen')}>
@@ -71,6 +75,18 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     fontSize: 30,
     color: "#B7B7B7",
+  },
+  cartbutton: {
+    backgroundColor: "#222222",
+    width: 200,
+    marginLeft: 20,
+    marginVertical: 10,
+    height: 30,
+    justifyContent: "center",
+  },
+  cartbuttontext: {
+    color: "#ffffff",
+    textAlign: "center",
   }
 });
 export default DetailsScreen;
