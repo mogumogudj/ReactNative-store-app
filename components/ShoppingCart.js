@@ -5,11 +5,12 @@ import { useNavigation } from '@react-navigation/native';
 const ShoppingCart = cartprops => {
   const navigation = useNavigation();
 
+  const [cartItems, setCartItems] = useState([]);
+
   return(
     <View style={styles.listItem}>
       
-      <Text style={styles.content}> test </Text>
-      <Text style={styles.content}> {cartprops.ShoppingCartTitle}</Text>
+      <Text style={styles.content}> {cartprops.ShoppingCartTitle} ~ hela</Text>
 
     </View>
   );

@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Button, FlatList, Image, Text, Pressable } from 'react-native';
 
 
-const DetailsScreen = ({ navigation, route }) => {
-
+const DetailsScreen = ({ navigation, route }, ) => {
+  
   return (
     <View style={styles.screen}>
 
@@ -23,20 +23,23 @@ const DetailsScreen = ({ navigation, route }) => {
       </View>
 
       <View style={styles.cartbutton}>
-        <Pressable onPress={() => navigation.navigate('CartScreen', {cartItemID: route.params.itemID, cartItemTitle: route.params.itemTitle})}>
+        <Pressable onPress={() => {navigation.navigate('CartScreen', {cartItemID: route.params.itemID, cartItemTitle: route.params.itemTitle, cartItemPrice: route.params.itemMeta[7]});}}>
           <Text style={styles.cartbuttontext}>add to shoppingcart</Text>
         </Pressable>
       </View>
 
       <View style={styles.alignbutton}>
-        <Pressable style={styles.backbutton} onPress={() => navigation.navigate('TravelsScreen')}>
+        <Pressable style={styles.backbutton} onPress={() => {navigation.navigate('TravelsScreen');}}>
           <Text style={styles.buttontext}>go back to overview</Text>
         </Pressable>
       </View>
 
     </View>
   );
+
 }
+
+
 
 const styles = StyleSheet.create({
   screen: {
