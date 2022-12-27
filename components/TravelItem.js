@@ -23,8 +23,6 @@ const TravelItem = itemprops => {
             <Text style={styles.buttontext}>View product: {itemprops.title}</Text>
           </Pressable>
 
-
-
       </View>
 
   );
@@ -33,7 +31,7 @@ const TravelItem = itemprops => {
 const styles = StyleSheet.create({
   listItem: {
     padding: 10,
-    marginVertical: 5,
+    marginVertical: 10,
     borderColor: '#C94838',
     borderStyle: 'solid',
     borderWidth: 0.5,

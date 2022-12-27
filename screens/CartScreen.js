@@ -3,10 +3,11 @@ import { StyleSheet, View, Button, FlatList, Image, Text, Pressable } from 'reac
 import { useNavigation } from '@react-navigation/native';
 
 import ShoppingCart from '../components/ShoppingCart';
+import TravelsScreen from './TravelScreen';
 
 
 const CartScreen = ({ navigation, route }) => {
-  console.log(route.params);
+  // console.log(route.params);
   return(
   <View style={styles.screen}>
 
@@ -25,10 +26,10 @@ const CartScreen = ({ navigation, route }) => {
       }
 
     /> */}
+    {/* <Text style={styles.testlist}>{route.params.cartItemID}</Text> */}
 
-    <ShoppingCart/>
+    <ShoppingCart ShoppingCartTitle={"test titel"}/>
 
-    <Text style={styles.testlist}>{route.params.cartItemID}</Text>
 
   </View>
 

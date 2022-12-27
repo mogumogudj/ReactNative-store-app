@@ -29,7 +29,7 @@ const TravelsScreen = ({ navigation }) => {
 
     <View style={styles.screen}>
 
-      <Pressable onPress={() => navigation.navigate('Cart')}>
+      <Pressable onPress={() => navigation.navigate('CartScreen')}>
         <Image style={styles.imagestyle} source={require('../assets/cart.png')}/>
       </Pressable>
 
@@ -65,7 +65,9 @@ const TravelsScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   screen: {
     padding: 30,
-    backgroundColor: "#000000"
+    backgroundColor: "#000000",
+    marginBottom: 50,
+    
   },
   searchfield: {
     marginVertical: 10,

@@ -8,13 +8,11 @@ const ShoppingCart = cartprops => {
   return(
     <View style={styles.listItem}>
       
-      <Text style={styles.content}> haah </Text>
-      <Text style={styles.content}> {cartprops.ShoppingCartTitle} blabalbalabla </Text>
+      <Text style={styles.content}> test </Text>
+      <Text style={styles.content}> {cartprops.ShoppingCartTitle}</Text>
 
     </View>
   );
-
-  console.log(cartprops.ShoppingCartItemID);
 
 }
 
