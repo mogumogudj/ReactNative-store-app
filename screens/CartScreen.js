@@ -10,7 +10,7 @@ import ShoppingCart from '../components/CartItem';
 const CartScreen = ({ navigation, route }) => {
 
   const [newItem, setNewItem] = useState([]);
-  const [cartItems, setCartItems] = useState(newItem);
+  const [cartItems, setCartItems] = useState([]);
   
   const getData = async () => {
     try{
@@ -19,7 +19,7 @@ const CartScreen = ({ navigation, route }) => {
         if (value != null) {
           let itemdata = JSON.parse(value);
           setNewItem(itemdata);
-          setCartItems((currentItems) => [...currentItems, newItem]);
+          setCartItems((currentItems) => [...currentItems, itemdata]);
         }
       })
     } catch (error) {

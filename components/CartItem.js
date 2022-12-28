@@ -9,7 +9,7 @@ const ShoppingCart = cartprops => {
   return(
     <View style={styles.listItem}>
       
-      <Text style={styles.content}> {cartprops.title} ~ hela</Text>
+      <Text style={styles.content}> {cartprops.title} ~ test</Text>
 
     </View>
   );
@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     screen: {
       flex: 1,
       paddingTop: 50,
-      backgroundColor: "#000000"
+      backgroundColor: "#000000",
   
     },
     content: {
