@@ -9,26 +9,28 @@ import ShoppingCart from '../components/CartItem';
 
 const CartScreen = ({ navigation, route }) => {
 
-  const [cartItems, setCartItems] = useState('');
+  const [newItem, setNewItem] = useState([]);
+  const [cartItems, setCartItems] = useState(newItem);
+  
+  const getData = async () => {
+    try{
+      AsyncStorage.getItem('@cartItem')
+      .then((value) => {
+        if (value != null) {
+          let itemdata = JSON.parse(value);
+          setNewItem(itemdata);
+          setCartItems((currentItems) => [...currentItems, newItem]);
+        }
+      })
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
     getData();
   }, []);
 
-  
-const getData = async () => {
-  try{
-    AsyncStorage.getItem('@piep')
-    .then((value) => {
-      if (value != null) {
-        setCartItems(value);
-      }
-    })
-  } catch (error) {
-    console.log(error);
-  }
-
-}
 
 
   return(
@@ -36,11 +38,11 @@ const getData = async () => {
   <View style={styles.screen}>
 
     <Pressable onPress={() => {
-      getData;
+      console.log(newItem);
+      console.log(newItem.itemID);
       console.log(cartItems);
-      console.log(cartItems.itemID);
     }}>
-      <ShoppingCart title={cartItems}/>
+      <ShoppingCart title={newItem.itemID}/>
     </Pressable>
 
     <FlatList
@@ -48,7 +50,7 @@ const getData = async () => {
       data={cartItems}
       renderItem={(item) => (
         <ShoppingCart
-        title={item.itemID}
+        title={item.item.itemTitle}
         />
         )}
     

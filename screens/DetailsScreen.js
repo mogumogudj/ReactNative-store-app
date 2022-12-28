@@ -5,12 +5,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const DetailsScreen = ({ navigation, route }, ) => {
 
-  const [paramsvalue, setParamsValue] = useState('');
-
-  const storeData = async () => {
-        try {
-      await AsyncStorage.setItem('@piep', JSON.stringify(route.params));
+  const storeNewItem = async () => {
+    try {
+      await AsyncStorage.setItem('@newItem', JSON.stringify(route.params));
       navigation.navigate('CartScreen', {cartData: route.params});
+      // console.log(route.params);
     } catch (error) {
       console.log(error);
     }
@@ -35,7 +34,7 @@ const DetailsScreen = ({ navigation, route }, ) => {
       </View>
 
       <View style={styles.cartbutton}>
-        <Pressable onPress={() => storeData(route.params)}>
+        <Pressable onPress={() => storeNewItem(route.params)}>
           <Text style={styles.cartbuttontext}>add to shoppingcart</Text>
         </Pressable>
       </View>
