@@ -14,18 +14,27 @@ const CartScreen = ({ navigation, route }) => {
   
   const getData = async () => {
     try{
-      AsyncStorage.getItem('@cartItem')
+      AsyncStorage.getItem('@newItem')
       .then((value) => {
         if (value != null) {
-          let itemdata = JSON.parse(value);
-          setNewItem(itemdata);
-          setCartItems((currentItems) => [...currentItems, itemdata]);
+          let itemData = JSON.parse(value);
+          setNewItem(itemData);
+          // AsyncStorage.setItem('@cartList', JSON.stringify(cartItems));
+          setCartItems([itemData]);
         }
       })
     } catch (error) {
       console.log(error);
     }
   }
+
+  // const storeDataArray = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('@cartList', JSON.stringify(newItem));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useEffect(() => {
     getData();
@@ -38,11 +47,11 @@ const CartScreen = ({ navigation, route }) => {
   <View style={styles.screen}>
 
     <Pressable onPress={() => {
-      console.log(newItem);
-      console.log(newItem.itemID);
+      // console.log(newItem);
+      // console.log(newItem.itemID);
       console.log(cartItems);
     }}>
-      <ShoppingCart title={newItem.itemID}/>
+      <Text style={styles.testlist}>debug console button</Text>
     </Pressable>
 
     <FlatList
@@ -51,6 +60,7 @@ const CartScreen = ({ navigation, route }) => {
       renderItem={(item) => (
         <ShoppingCart
         title={item.item.itemTitle}
+        price={item.item.itemMeta[7]}
         />
         )}
     

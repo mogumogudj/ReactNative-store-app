@@ -9,7 +9,8 @@ const ShoppingCart = cartprops => {
   return(
     <View style={styles.listItem}>
       
-      <Text style={styles.content}> {cartprops.title} ~ test</Text>
+      <Text style={styles.content}> {cartprops.title} ~ </Text>
+      <Text style={styles.content}> {cartprops.price} ~ </Text>
 
     </View>
   );
