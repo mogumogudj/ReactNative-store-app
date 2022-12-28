@@ -1,21 +1,58 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Button, FlatList, Image, Text, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import ShoppingCart from '../components/ShoppingCart';
 
+import ShoppingCart from '../components/CartItem';
 
 
 const CartScreen = ({ navigation, route }) => {
-    
+
+  const [cartItems, setCartItems] = useState('');
+
+  useEffect(() => {
+    getData();
+  }, []);
+
+  
+const getData = async () => {
+  try{
+    AsyncStorage.getItem('@piep')
+    .then((value) => {
+      if (value != null) {
+        setCartItems(value);
+      }
+    })
+  } catch (error) {
+    console.log(error);
+  }
+
+}
+
 
   return(
 
   <View style={styles.screen}>
 
-    {/* <ShoppingCart ShoppingCartTitle={route.params.cartItemTitle}/> */}
-    <ShoppingCart/>
+    <Pressable onPress={() => {
+      getData;
+      console.log(cartItems);
+      console.log(cartItems.itemID);
+    }}>
+      <ShoppingCart title={cartItems}/>
+    </Pressable>
 
+    <FlatList
+      keyExtractor={item => item.itemID}
+      data={cartItems}
+      renderItem={(item) => (
+        <ShoppingCart
+        title={item.itemID}
+        />
+        )}
+    
+    />
 
   </View>
 

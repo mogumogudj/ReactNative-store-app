@@ -20,7 +20,6 @@ const TravelsScreen = ({ navigation }) => {
     
   }
 
-
   useEffect(() => {
     getItems();//loads the store items
   }, [content]);

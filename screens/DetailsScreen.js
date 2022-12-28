@@ -1,8 +1,20 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, View, Button, FlatList, Image, Text, Pressable } from 'react-native';
+import { StyleSheet, View, Button, FlatList, Image, Text, Pressable, Alert } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const DetailsScreen = ({ navigation, route }, ) => {
+
+  const [paramsvalue, setParamsValue] = useState('');
+
+  const storeData = async () => {
+        try {
+      await AsyncStorage.setItem('@piep', JSON.stringify(route.params));
+      navigation.navigate('CartScreen', {cartData: route.params});
+    } catch (error) {
+      console.log(error);
+    }
+  }
   
   return (
     <View style={styles.screen}>
@@ -23,7 +35,7 @@ const DetailsScreen = ({ navigation, route }, ) => {
       </View>
 
       <View style={styles.cartbutton}>
-        <Pressable onPress={() => {navigation.navigate('CartScreen', {cartItemID: route.params.itemID, cartItemTitle: route.params.itemTitle, cartItemPrice: route.params.itemMeta[7]});}}>
+        <Pressable onPress={() => storeData(route.params)}>
           <Text style={styles.cartbuttontext}>add to shoppingcart</Text>
         </Pressable>
       </View>
