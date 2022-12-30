@@ -9,48 +9,57 @@ import ShoppingCart from '../components/CartItem';
 
 const CartScreen = ({ navigation, route }) => {
 
-  const [newItem, setNewItem] = useState([]);
   const [cartItems, setCartItems] = useState([]);
-  
+  const [oldItem, setOldItem] = useState([]);
+
   const getData = async () => {
     try{
-      AsyncStorage.getItem('@newItem')
+      AsyncStorage.getItem('@newCartItem')
       .then((value) => {
-        if (value != null) {
           let itemData = JSON.parse(value);
-          setNewItem(itemData);
-          // AsyncStorage.setItem('@cartList', JSON.stringify(cartItems));
-          setCartItems([itemData]);
-        }
+          setCartItems([...oldItem, itemData]);
       })
     } catch (error) {
       console.log(error);
     }
   }
 
-  // const storeDataArray = async () => {
-  //   try {
-  //     await AsyncStorage.setItem('@cartList', JSON.stringify(newItem));
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // }
+  const getOldItemData = async () => {
+    try{
+      AsyncStorage.getItem('@cartList')
+      .then((value) =>{
+        let cartData = JSON.parse(value);
+        setOldItem(cartData);
+      })
+    }catch (error) {
+      console.log(error);
+    }
+  }
+
+  const storeDataArray = async () => {
+    try {
+      await AsyncStorage.setItem('@cartList', JSON.stringify(cartItems));
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   useEffect(() => {
+    getOldItemData();
     getData();
   }, []);
-
-
 
   return(
 
   <View style={styles.screen}>
 
-    <Pressable onPress={() => {
-      // console.log(newItem);
-      // console.log(newItem.itemID);
-      console.log(cartItems);
-    }}>
+    <Pressable
+        onPress={() => {
+          console.log('- - - - - - - - - - - - - - -');
+          console.log(cartItems);
+          console.log(oldItem);
+        }}
+      >
       <Text style={styles.testlist}>debug console button</Text>
     </Pressable>
 

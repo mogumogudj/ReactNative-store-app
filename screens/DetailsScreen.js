@@ -7,7 +7,7 @@ const DetailsScreen = ({ navigation, route }, ) => {
 
   const storeNewItem = async () => {
     try {
-      await AsyncStorage.setItem('@newItem', JSON.stringify(route.params));
+      await AsyncStorage.setItem('@newCartItem', JSON.stringify(route.params));
       navigation.navigate('CartScreen', {cartData: route.params});
       // console.log(route.params);
     } catch (error) {
