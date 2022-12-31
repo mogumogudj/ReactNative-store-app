@@ -5,9 +5,11 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 const ShoppingCart = cartprops => {
+
   const navigation = useNavigation();
 
-  const [itemAmount, setItemAmount] = useState(0);
+  const [itemAmount, setItemAmount] = useState(1);
+  const [totalprice, setTotalprice] = useState('');
 
   function addition() {
     if(itemAmount<8){
@@ -15,14 +17,22 @@ const ShoppingCart = cartprops => {
     }
   }
   function subtraction(){
-    if(itemAmount>0){
+    if(itemAmount>1){
       setItemAmount((currenItemAmount) => currenItemAmount - 1);
     }
   }
 
   function orderCalc(){
-
+    setTotalprice(cartprops.price * itemAmount);
   }
+
+  function logging(){
+    console.log(totalprice);
+  }
+
+  useEffect(() => {
+    orderCalc();
+  }, [itemAmount]);
 
   return(
     <View style={styles.listItem}>
@@ -30,21 +40,25 @@ const ShoppingCart = cartprops => {
       <Image style={styles.imagestyle} source={{uri: cartprops.image}}/>
 
       <Text style={styles.content}>{cartprops.title}</Text>
-      <Text style={styles.content}>{cartprops.price}</Text>
+      <Text style={styles.content}>price for one adult: €{cartprops.price}</Text>
 
       <View style={styles.addsub}>
+
         <Pressable onPress={subtraction}>
-          <Text style={styles.content}>-</Text>
+          <Text style={styles.minibuttons}>-</Text>
         </Pressable>
 
         <Text style={styles.content}>{itemAmount}</Text>
 
         <Pressable onPress={addition}>
-          <Text style={styles.content}>+</Text>
+          <Text style={styles.minibuttons}>+</Text>
         </Pressable>
+
       </View>
 
-      <Pressable style={styles.orderbutton} onPress={orderCalc}>
+      <Text style={styles.content}>totaal: €{totalprice}</Text>
+
+      <Pressable style={styles.orderbutton} onPress={() => navigation.navigate('OrderScreen', {OrderTotal: totalprice})}>
           <Text style={styles.buttontext}>ORDER NOW</Text>
       </Pressable>
 
@@ -73,6 +87,7 @@ const styles = StyleSheet.create({
         borderWidth: 0.5,
       },
     addsub: {
+      marginLeft: 10,
       flexDirection: 'row',
     },
     imagestyle: {
@@ -89,6 +104,11 @@ const styles = StyleSheet.create({
       color: "#C94838", 
       fontSize: 16,
     },
+    minibuttons: {
+      padding: 10,
+      backgroundColor: "#222222",
+      color: "#C94838",
+  },
   });
 
 export default ShoppingCart;
