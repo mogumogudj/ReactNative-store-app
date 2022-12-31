@@ -1,16 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, FlatList, TextInput, Image, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, Pressable, Alert } from 'react-native';
 
 const OrderScreen = ({navigation, route}) => {
+
+    function alertnoti(){
+        Alert.alert('purchase succeeded')
+    }
     
     return(
         <View style={styles.screen}>
-            <Text style={styles.content}>Betaal €{route.params.OrderTotal}</Text>
 
-            <View>
-                
-            </View>
+            <Text style={styles.content}>pay €{route.params.OrderTotal}</Text>
+
+            <Pressable style={styles.orderbutton} onPress={() => {navigation.navigate('TravelsScreen'); alertnoti();}}>
+                <Text style={styles.payment}>PAY</Text>
+            </Pressable>
+
 
 
         </View>
@@ -19,43 +23,34 @@ const OrderScreen = ({navigation, route}) => {
 
 const styles = StyleSheet.create({
     screen: {
-      flex: 1,
-      paddingTop: 50,
-      backgroundColor: "#000000",
+        flex: 1,
+        paddingTop: 50,
+        backgroundColor: "#000000",
   
     },
     content: {
-      alignContent: 'stretch',
-      padding: 10,
-      color: "#ffffff",
-    },
-    listItem: {
+        textAlign: "center",
+        fontSize: 30,
+        alignContent: 'stretch',
         padding: 10,
-        marginVertical: 5,
-        borderColor: '#C94838',
-        borderStyle: 'solid',
-        borderWidth: 0.5,
-      },
-    addsub: {
-      flexDirection: 'row',
+        color: "#ffffff",
+    },
+    payment: {
+        paddingVertical: 50,
+        fontWeight: "900",
+        fontSize: 50,
+        color: "#ffffff",
+        textAlign: "center",
     },
     imagestyle: {
-      height: 200,
+        height: 200,
     },
     orderbutton: {
-      backgroundColor: "#222222",
-      paddingVertical: 10,
-      width: '100%',
-      marginTop: 10,
-    },
-    buttontext: {
-      textAlign: 'center',
-      color: "#C94838", 
-      fontSize: 16,
-    },
-    minibuttons: {
-        backgroundColor: "#ffffff",
-    },
+        backgroundColor: "#222222",
+        paddingVertical: 10,
+        width: '100%',
+        marginTop: 100,
+      },
   });
 
 export default OrderScreen;

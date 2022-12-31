@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View, FlatList, TextInput, Image, Pressable } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
 
 // import apiKey from '../apiKey';
 import TravelItem from '../components/TravelItem';
