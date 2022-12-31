@@ -29,7 +29,7 @@ const DetailsScreen = ({ navigation, route }, ) => {
         <Text style={styles.contentText} >- Guided: {route.params.itemMeta[3]}</Text>
         <Text style={styles.contentText} >- Courses: {route.params.itemMeta[4]}</Text>
         <Text style={styles.contentText} >- Type of exercise and sport: {route.params.itemMeta[6]}</Text>
-        <Text style={styles.contentPrice} >  PRICE {route.params.itemMeta[7]} </Text>
+        <Text style={styles.contentPrice} >  PRICE: €{route.params.itemMeta[7]} </Text>
         <Text></Text>
       </View>
 

@@ -16,7 +16,7 @@ const TravelItem = itemprops => {
             <Text style={styles.itemdesc} >days: {itemprops.metadata[0]}</Text>
             <Text style={styles.itemdesc} >persons: {itemprops.metadata[1]}</Text>
             <Text style={styles.itemdesc} >type of sport: {itemprops.metadata[6]}</Text>
-            <Text style={styles.itemprice} >price: {itemprops.metadata[7]}</Text>
+            <Text style={styles.itemprice} >price: €{itemprops.metadata[7]}</Text>
           </View>
 
           <Pressable style={styles.productbutton} onPress={() => navigation.navigate("DetailsScreen", {itemTitle: itemprops.title, itemID: itemprops.itemid, itemMeta: itemprops.metadata, itemImage: itemprops.metaimage})}>

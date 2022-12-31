@@ -49,6 +49,12 @@ const CartScreen = ({ navigation, route }) => {
     getData();
   }, []);
 
+  function test(){
+    console.log(cartItems[0].itemMeta[7]);
+  }
+
+
+
   return(
 
   <View style={styles.screen}>
@@ -70,10 +76,15 @@ const CartScreen = ({ navigation, route }) => {
         <ShoppingCart
         title={item.item.itemTitle}
         price={item.item.itemMeta[7]}
+        image={item.item.itemImage}
         />
         )}
     
     />
+    
+    <Pressable style={styles.orderbutton} onPress={test}>
+      <Text style={styles.buttontext}>ORDER NOW</Text>
+    </Pressable>
 
   </View>
 
@@ -93,7 +104,18 @@ const styles = StyleSheet.create({
     testlist: {
       paddingLeft: 20,
       color: "#ffffff"
-    }
+    },
+    orderbutton: {
+      backgroundColor: "#222222",
+      paddingVertical: 10,
+      width: '100%',
+      marginTop: 100,
+    },
+    buttontext: {
+      textAlign: 'center',
+      color: "#C94838", 
+      fontSize: 16,
+    },
   });
   
 export default CartScreen;

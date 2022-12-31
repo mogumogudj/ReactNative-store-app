@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 const ShoppingCart = cartprops => {
   const navigation = useNavigation();
@@ -18,25 +20,34 @@ const ShoppingCart = cartprops => {
     }
   }
 
+  function orderCalc(){
+
+  }
 
   return(
     <View style={styles.listItem}>
       
-      <Text style={styles.content}> {cartprops.title} ~ </Text>
-      <Text style={styles.content}> {cartprops.price} ~ </Text>
+      <Image style={styles.imagestyle} source={{uri: cartprops.image}}/>
+
+      <Text style={styles.content}>{cartprops.title}</Text>
+      <Text style={styles.content}>{cartprops.price}</Text>
 
       <View style={styles.addsub}>
-        <Pressable onPress={addition}>
-          <Text style={styles.content}>+</Text>
+        <Pressable onPress={subtraction}>
+          <Text style={styles.content}>-</Text>
         </Pressable>
 
         <Text style={styles.content}>{itemAmount}</Text>
 
-        <Pressable onPress={subtraction}>
-          <Text style={styles.content}>-</Text>
+        <Pressable onPress={addition}>
+          <Text style={styles.content}>+</Text>
         </Pressable>
       </View>
-      <Text>{cartprops.allData}</Text>
+
+      <Pressable style={styles.orderbutton} onPress={orderCalc}>
+          <Text style={styles.buttontext}>ORDER NOW</Text>
+      </Pressable>
+
     </View>
   );
 
@@ -63,6 +74,20 @@ const styles = StyleSheet.create({
       },
     addsub: {
       flexDirection: 'row',
+    },
+    imagestyle: {
+      height: 200,
+    },
+    orderbutton: {
+      backgroundColor: "#222222",
+      paddingVertical: 10,
+      width: '100%',
+      marginTop: 10,
+    },
+    buttontext: {
+      textAlign: 'center',
+      color: "#C94838", 
+      fontSize: 16,
     },
   });
 
