@@ -25,9 +25,9 @@ const ShoppingCart = cartprops => {
     setTotalprice(cartprops.price * itemAmount);
   }
 
-  function logging(){
-    console.log(totalprice);
-  }
+  // function logging(){
+  //   console.log(totalprice);
+  // }
 
   useEffect(() => {
     orderCalc();

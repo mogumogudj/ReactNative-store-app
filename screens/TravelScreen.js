@@ -7,10 +7,10 @@ import TravelItem from '../components/TravelItem';
 const TravelsScreen = ({ navigation }) => {
   
   const [content, setContent] = useState([]);
+
   const getItems = async () => {
     try {
-      const response = await fetch("https://arnesamson.be/wp-json/wp/v2/posts?categories=14", {}
-      )
+      const response = await fetch("https://arnesamson.be/wp-json/wp/v2/posts?categories=14", {});
       const json = await response.json();
       setContent(json)
     } catch (error) {
@@ -22,6 +22,20 @@ const TravelsScreen = ({ navigation }) => {
   useEffect(() => {
     getItems();//loads the store items
   }, [content]);
+
+
+  const getTravelsByTitleSearch = async (enteredText) => {
+    try {
+        const url = encodeURI("https://arnesamson.be/index.php/wp-json/wp/v2/posts?tags=" + enteredText + "/");
+        console.log(url);
+        const response = await fetch(url)
+        const json = await response.json();
+        console.log(json);
+        setContent(json);
+    } catch (error) {
+      console.error(error);
+    }
+  }
 
   return (
 
@@ -35,7 +49,7 @@ const TravelsScreen = ({ navigation }) => {
         style={styles.searchfield}
         placeholder="search a trip"
         placeholderTextColor="#B7B7B7" 
-        //geeft argument enteredText mee, denk aan de taskInputHandler uit de todo app.
+        onChangeText={getTravelsByTitleSearch}
       />
 
       <FlatList
@@ -68,6 +82,7 @@ const styles = StyleSheet.create({
     
   },
   searchfield: {
+    color: "#ffffff",
     marginVertical: 10,
   },
   imagestyle: {
