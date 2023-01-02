@@ -1,6 +1,13 @@
-import { StyleSheet, Text, View, Pressable, Alert } from 'react-native';
+import { StyleSheet, Text, View, Pressable, Alert, Vibration } from 'react-native';
 
 const OrderScreen = ({navigation, route}) => {
+
+    const pattern= [
+        0,
+        200,
+        200,
+        200,
+    ];
 
     function alertnoti(){
         Alert.alert('purchase succeeded')
@@ -11,7 +18,7 @@ const OrderScreen = ({navigation, route}) => {
 
             <Text style={styles.content}>pay €{route.params.OrderTotal}</Text>
 
-            <Pressable style={styles.orderbutton} onPress={() => {navigation.navigate('TravelsScreen'); alertnoti();}}>
+            <Pressable style={styles.orderbutton} onPress={() => {navigation.navigate('TravelsScreen'); alertnoti(); Vibration.vibrate(pattern, false)}}>
                 <Text style={styles.payment}>PAY</Text>
             </Pressable>
 
