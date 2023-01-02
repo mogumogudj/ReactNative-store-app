@@ -26,13 +26,15 @@ const TravelsScreen = ({ navigation }) => {
 
   const getTravelsByTitleSearch = async (enteredText) => {
     try {
-      if (enteredText.length > 5) {
+      if (enteredText.length > 4) {
         const url = encodeURI("https://arnesamson.be/wp-json/wp/v2/posts?slug=" + enteredText + "/");
         console.log(url);
         const response = await fetch(url)
         const json = await response.json();
         console.log(json);
         setContent(json);
+      } else{
+        getItems();
       }
     } catch (error) {
       console.error(error);
