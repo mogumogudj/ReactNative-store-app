@@ -13,10 +13,46 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="TravelsScreen" component={TravelsScreen} />
-        <Stack.Screen name="DetailsScreen" component={DetailsScreen} />
-        <Stack.Screen name="CartScreen" component={CartScreen}/>
-        <Stack.Screen name="OrderScreen" component={OrderScreen}/>
+        <Stack.Screen name="TravelsScreen" component={TravelsScreen} options={{
+          title: 'Home',
+          headerStyle: {
+            backgroundColor: '#C94838',
+          },
+          headerTintColor: '#ffffff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}/>
+        <Stack.Screen name="DetailsScreen" component={DetailsScreen} options={{
+          title: 'Product',
+          headerStyle: {
+            backgroundColor: '#C94838',
+          },
+          headerTintColor: '#ffffff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}/>
+        <Stack.Screen name="CartScreen" component={CartScreen} options={{
+          title: 'Shopping Cart',
+          headerStyle: {
+            backgroundColor: '#C94838',
+          },
+          headerTintColor: '#ffffff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}/>
+        <Stack.Screen name="OrderScreen" component={OrderScreen} options={{
+          title: 'order',
+          headerStyle: {
+            backgroundColor: '#C94838',
+          },
+          headerTintColor: '#ffffff',
+          headerTitleStyle: {
+            fontWeight: 'bold',
+          },
+        }}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
