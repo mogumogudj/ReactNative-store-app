@@ -35,13 +35,13 @@ const CartScreen = ({ navigation, route }) => {
     }
   }
 
-  const storeDataArray = async () => {
-    try {
-      await AsyncStorage.setItem('@cartList', JSON.stringify(cartItems));
-    } catch (error) {
-      console.log(error);
-    }
-  }
+  // const storeDataArray = async () => {
+  //   try {
+  //     await AsyncStorage.setItem('@cartList', JSON.stringify(cartItems));
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }
 
   useEffect(() => {
     getOldItemData();
@@ -58,7 +58,7 @@ const CartScreen = ({ navigation, route }) => {
 
   <View style={styles.screen}>
 
-    <Pressable
+    {/* <Pressable
         onPress={() => {
           console.log('- - - - - - - - - - - - - - -');
           console.log(cartItems);
@@ -66,7 +66,7 @@ const CartScreen = ({ navigation, route }) => {
         }}
       >
       <Text style={styles.testlist}>debug console button</Text>
-    </Pressable>
+    </Pressable> */}
 
     <FlatList
       keyExtractor={item => item.itemID}
@@ -81,9 +81,9 @@ const CartScreen = ({ navigation, route }) => {
     
     />
     
-    <Pressable style={styles.orderbutton} onPress={test}>
+    {/* <Pressable style={styles.orderbutton} onPress={test}>
       <Text style={styles.buttontext}>ORDER NOW</Text>
-    </Pressable>
+    </Pressable> */}
 
   </View>
 
